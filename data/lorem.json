@@ -1,0 +1,27 @@
+  {
+    "_id": "5513517995397014d8af6e04",
+    "index": 0,
+    "guid": "503547f3-5b30-4846-9eec-61687e972949",
+    "isActive": false,
+    "picture": "http://placehold.it/32x32",
+    "age": 30,
+    "eyeColor": "blue",
+    "name": "Foo Bar",
+    "gender": "male",
+    "company": "FooBar",
+    "email": "foo@bar.com",
+    "address": "Lorem ipsum",
+    "about": "Dolor incididunt et aliquip ipsum pariatur incididunt. Mollit qui tempor incididunt aute dolore ullamco fugiat laborum nostrud. Id quis elit nulla consectetur aliquip excepteur.\r\n",
+    "registered": "2014-08-21T16:22:56 -06:-30",
+    "latitude": -20.813761,
+    "longitude": -166.111136,
+    "tags": [
+      "laborum",
+      "eiusmod",
+      "velit",
+      "laborum",
+      "elit",
+      "sint",
+      "est"
+    ]
+}

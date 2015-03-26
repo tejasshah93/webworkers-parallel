@@ -1,0 +1,22 @@
+{
+    "_id": "7155b91bd41dc06b7b9289fac2ba33b1",
+    "collectionName": "TCGA-LUSC",
+    "countSeries": 2,
+    "countImages": 296,
+    "totalSizeMB": 90,
+    "countPatients": 31,
+    "countStudies": 60,
+    "seriesPath": "/download/TCGA-LUSC/",
+    "series": [
+        {
+            "seriesuid": "c9d929d715885ee01332afb17bf193d2",
+            "seriesorderid": 1,
+            "sizemb": 42
+        },
+        {
+            "seriesuid": "6e5da42396da792d144a8c0eedb1e3ae",
+            "seriesorderid": 2,
+            "sizemb": 48
+        }
+    ]
+}

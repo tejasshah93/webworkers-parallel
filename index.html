@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Worker Example with XHR Request</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body>
+<script type="text/javascript" src="js/worker.js"></script>
+<style type="text/css">
+.hero-spacer {
+  margin-top: 50px;
+}
+</style>
+
+<div class="container marketing">
+  <div class="jumbotron hero-spacer text-center">
+    <h2>Spawn webworkers to fetch data in parallel</h2>
+    <br/><br/>
+    <button class="btn btn-primary btn-large"  onclick="startWorkers()">Start WebWorkers</button>
+  </div>
+  <div id="result"></div><br/><br/>
+  <h4 id="worker1"></h4><br/><br/>
+  <h4 id="worker2"></h4><br/><br/>
+</div>
+<script>
+//HTML5 Web Workers
+if(typeof(Worker) !== "undefined") {
+  var worker1 = new Worker('js/worker.js');
+  var worker2 = new Worker('js/worker.js');
+}
+else{
+  document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+}
+
+function startWorkers () {
+  listenWorker(worker1, 1);
+  listenWorker(worker2, 2);
+
+  worker1.postMessage({'url':'../data/manifest.json', 'id': '1'}); // Send filename to our worker.
+  document.getElementById("worker1").textContent = "Worker1: Fetching in progress ...";
+  worker2.postMessage({'url':'../data/lorem.json', 'id': '2'}); // Send filename to our worker.
+  document.getElementById("worker2").textContent = "Worker2: Fetching in progress ...";
+}
+
+function listenWorker (worker, workerID){
+  worker.addEventListener('message', function(e) {
+      document.getElementById("worker" + workerID).textContent = "Worker " + workerID + ":\n" + e.data;
+      stopWorker(worker);
+      }, false);
+
+  worker.onerror = function (event) {
+	  alert(event.message);
+	  event.preventDefault();
+  }
+}
+
+function stopWorker (worker) {
+  worker.terminate();
+}
+</script>
+</body>
+</html>
